@@ -1,0 +1,6 @@
+{
+  "title": "Telemetry",
+  "blurb": "Fan-in: many emitters to one collector over datagram framing. Good for the fault sliders.",
+  "entry": "telemetry.ids",
+  "order": 4
+}

@@ -1,0 +1,16 @@
+struct Item {
+    id: u64
+    name: string
+}
+
+/// The public API. Put a client on one machine, a `Frontend` server on a
+/// gateway machine, and a `Backend` server on a third.
+protocol Frontend {
+    function lookup(id: u64) -> Item;
+}
+
+/// The gateway machine also hosts a `Backend` client, so set `lookup`'s
+/// behaviour to *forward* — it relays the call to `fetch` on the backend.
+protocol Backend {
+    function fetch(id: u64) -> Item;
+}

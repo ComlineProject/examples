@@ -1,0 +1,6 @@
+{
+  "title": "Chat",
+  "blurb": "Request/response with a raised error and a fire-and-forget note. Two files, JSON-RPC framing.",
+  "entry": "chat.ids",
+  "order": 1
+}

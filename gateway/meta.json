@@ -1,0 +1,6 @@
+{
+  "title": "Gateway",
+  "blurb": "Two protocols. Host a Frontend server and a Backend client on one machine, set lookup's behaviour to forward.",
+  "entry": "gateway.ids",
+  "order": 3
+}

@@ -1,0 +1,6 @@
+{
+  "title": "Key/Value store",
+  "blurb": "A read that can fail (NotFound), plus writes. One protocol, three functions.",
+  "entry": "keyvalue.ids",
+  "order": 2
+}

@@ -1,0 +1,15 @@
+{
+  "name": "comline-examples",
+  "version": "0.0.0",
+  "description": "Example .ids schemas for the Comline playground.",
+  "license": "GPL-3.0-only",
+  "repository": { "type": "git", "url": "git+https://github.com/ComlineProject/examples.git" },
+  "type": "module",
+  "main": "examples.json",
+  "files": ["examples.json"],
+  "scripts": {
+    "bundle": "node bundle.mjs",
+    "prepare": "node bundle.mjs",
+    "prepack": "node bundle.mjs"
+  }
+}

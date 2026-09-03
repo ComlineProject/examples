@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Bundle
+        run: node bundle.mjs
+      - name: Valid JSON, one entry per directory
+        run: |
+          node -e '
+            const fs = require("fs");
+            const ex = JSON.parse(fs.readFileSync("examples.json", "utf8"));
+            const dirs = fs.readdirSync(".", { withFileTypes: true })
+              .filter(d => d.isDirectory() && !d.name.startsWith("."))
+              .map(d => d.name).sort();
+            const ids = ex.map(e => e.id).sort();
+            if (JSON.stringify(dirs) !== JSON.stringify(ids)) {
+              throw new Error(`dirs ${dirs} != bundled ${ids}`);
+            }
+            for (const e of ex) {
+              if (!e.title || !e.blurb || !e.files.length) throw new Error(`${e.id}: incomplete`);
+              if (!e.files.some(f => f.name === e.entry)) throw new Error(`${e.id}: entry missing`);
+            }
+            console.log(`ok — ${ex.length} examples`);
+          '

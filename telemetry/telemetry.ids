@@ -1,0 +1,15 @@
+struct Sample {
+    metric: string
+    value: u64
+    at: u64
+}
+
+/// One collector, many emitters. Wire several clients to one server and try
+/// the fault sliders (drop / delay) on a connection.
+@framing = "datagram"
+protocol Telemetry {
+    /// Fire-and-forget metric.
+    function emit(sample: Sample);
+    /// How many samples are buffered right now.
+    function depth() -> u64;
+}
