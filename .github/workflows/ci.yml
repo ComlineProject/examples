@@ -33,7 +33,7 @@ jobs:
         run: node bundle.mjs
       - name: Valid JSON, one entry per directory
         run: |
-          node -e '
+          node - <<'EOF'
             const fs = require("fs");
             const ex = JSON.parse(fs.readFileSync("examples.json", "utf8"));
             const dirs = fs.readdirSync(".", { withFileTypes: true })
@@ -48,4 +48,4 @@ jobs:
               if (!e.files.some(f => f.name === e.entry)) throw new Error(`${e.id}: entry missing`);
             }
             console.log(`ok — ${ex.length} examples`);
-          '
+          EOF
