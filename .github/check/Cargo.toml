@@ -1,0 +1,10 @@
+[package]
+name = "check-examples"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+# The compiler the examples are checked with. Bump the rev to check against a
+# newer one.
+comline-core = { git = "https://github.com/ComlineProject/core", rev = "69039e7ab05953760bb7a6818f61e98c14b43922" }
